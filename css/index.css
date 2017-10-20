@@ -1,0 +1,43 @@
+#simulation-frame{
+    border:2px solid black;
+    height:500px;
+    position: relative;
+}
+.rectangle{
+    border: 1px solid gray;
+    height: 2.5em;
+    width: 3%;
+    margin-left: .5%;
+}
+.packet{
+    z-index: -1;
+    border: 1px solid gray;
+    height: 2.5em;
+    width: 3%;
+    position: absolute;
+    top: 10px;
+    background-color: red;
+    animation-timing-function: linear;
+    -webkit-animation-name: move-down; /* Safari 4.0 - 8.0 */
+    /* -webkit-animation-duration: 4s; Safari 4.0 - 8.0 */
+    animation-name: move-down;
+    animation-direction: alternate;
+    animation-iteration-count: 2;
+    /* animation-duration: 4s; */
+} 
+.top{
+    margin-top: 10px;
+}
+.bottom{
+    margin-top: 400px;
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes move-down {
+    from {top: 0px;}
+    to {top: 450px;}
+}
+/* Standard syntax */
+@keyframes move-down {
+    from {top: 10px;}
+    to {top: 450px;}
+}

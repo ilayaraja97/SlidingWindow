@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        Sliding Window Protocol Simulator
+    </title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <form method="GET" action="#">
+            <div class="row justify-content-md-center">
+                <div class="form-group col col-md-3">
+                    <label for="number-windows-input">Number of windows</label>
+                    <input type="number" class="form-control" id="number-windows-input" value="6" />
+                </div>
+                <div class="form-group col col-md-3">
+                    <label for="frequency-input">Frequency of sending packets</label>
+                    <input type="number" class="form-control" id="frequency-input" value="1" />
+                </div>
+                <div class="form-group col col-md-3">
+                    <label for="transmission-delay-input">Transmission Delay</label>
+                    <input type="number" class="form-control" id="transmission-delay-input" value="1" />
+                </div>
+                <div class="form-group col col-md-3">
+                    <label for="timeout-input">Timeout</label>
+                    <input type="number" class="form-control" id="timeout-input" value="10" />
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="form-group col col-md-1">
+                    <input type="button" class="form-control" value="Start" id="start-stop-button" onclick="startSimulation(document.getElementById('number-windows-input').value,document.getElementById('frequency-input').value,document.getElementById('transmission-delay-input').value,document.getElementById('timeout-input').value);">
+                </div>
+            </div>
+        </form>
+    </div>
+    <hr/>
+    <div class="container-fluid">
+        <div class="row justify-content-md-center">
+            <canvas class="col col-md-6" id="simulation-frame">
+                <!-- <div class="row top" id="sender-row">
+                    <div class="rectangle">
+                        <div class="row justify-content-md-center">
+                            0
+                        </div>
+                    </div>
+                </div>
+                <div class="row bottom" id="reciever-row">
+                    <div class="rectangle">
+                        <div class="row justify-content-md-center">
+                            0
+                        </div>
+                    </div>
+                </div> -->
+            </canvas>
+        </div>
+    </div>
+</body>
+<!-- <script src="./js/jquery.min.js"></script> -->
+<script src="./js/paperjs-v0.11.5/dist/paper-full.min.js"></script>
+<script type="text/javascript">
+	paper.install(window);
+</script>
+<script src="./js/index.js"></script>
+</html>

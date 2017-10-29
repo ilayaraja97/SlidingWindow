@@ -34,17 +34,19 @@ function startSimulation(windowSize,frequency,delay,timeout) {
     var receiverWindow = new Path.Rectangle([3, 500-42], [25*windowSize-1, 34]);
     receiverWindow.strokeColor='red'; 
 
-    var magic=0,m1=0;
+    var magic=-2,m1=1;
     switch(windowSize)
     {
         case 2:
         case 3:
+        break;
         case 4:
-        case 5:
+        case 5:magic=-1;
         break;
         case 6:
-        case 7:
-        case 8:m1=1
+        case 7:m1=1;magic=0;
+        break;
+        case 8:m1=2;magic=0;
         break;
         case 9:
         case 10:m1=1;magic=1;
@@ -52,10 +54,10 @@ function startSimulation(windowSize,frequency,delay,timeout) {
         default:magic=2;
     }
 
-    var packet = [];   
+    var packet = [];    
     view.onMouseDown = function(event) {
         packet.forEach(function (e) {
-            console.log(e);
+            //console.log(e);
             if(Math.abs(e.path.position.x-event.point.x)<20)
                 if(Math.abs(e.path.position.y-event.point.y)<30)
                 {   
@@ -69,6 +71,39 @@ function startSimulation(windowSize,frequency,delay,timeout) {
         //get position of sender window
         var spos=Math.round(senderWindow.position.x/25-3.6)-magic;
         var rpos=Math.round(receiverWindow.position.x/25-3.6)-magic;
+        /*if(spos>=20)
+        {
+            spos=spos-15;
+            rpos=rpos-15;
+            senderWindow.position.x=senderWindow.position.x-375;
+            receiverWindow.position.x=receiverWindow.position.x-375;
+            packet.forEach(function (e){
+                e.path.position.x-=375;
+                e.id-=15;
+            },this);
+            for(var i=15;i<30;i++)
+            {
+                senderFrames[i-15].path.fillColor='#FFF';
+                recieverFrames[i-15].path.fillColor='#FFF';
+                senderFrames[i-15]=senderFrames[i];
+                recieverFrames[i-15]=recieverFrames[i];
+                var o = {
+                    path:new Path.Rectangle([5+25*i, 500-40], [20, 30]),
+                    awk:false
+                };
+                o.path.strokeColor = 'black';
+                recieverFrames[i]= o;
+                o = {
+                    path:new Path.Rectangle([5+25*i, 10], [20, 30]),
+                    start:-1,
+                    timer:timeout,
+                    awk:false
+                };
+                o.path.strokeColor = 'black';
+                senderFrames[i]=o;
+                
+            }
+        }*/
         if(event.time<2)
         {
             //start simulation after 2s
@@ -156,6 +191,7 @@ function startSimulation(windowSize,frequency,delay,timeout) {
         if(rpos<30&&rpos>=0)
             if(recieverFrames[rpos].awk)
                 receiverWindow.position.x+=25;
-        //console.log(spos);
+        
+        console.log(spos);
     }
 }

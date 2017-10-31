@@ -58,7 +58,6 @@ function startSimulation(windowSize, frequency, delay, timeout) {
     var receiverWindow = new Path.Rectangle([3, 500 - 42], [25 * windowSize - 1, 34]);
     receiverWindow.strokeColor = 'red';
 
-    var translatex = 0;
     var packet = [];
     view.onMouseDown = function (event) {
         packet.forEach(function (e) {
